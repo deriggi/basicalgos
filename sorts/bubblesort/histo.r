@@ -14,5 +14,8 @@ head(mergey)
 
 library(lattice)
 
-xyplot(mergey$size ~ mergey$iterations_slow , grid=T,  scales = list(x = list(log = 10, equispaced.log = FALSE)),
+xyplot(mergey$iterations_fast ~ mergey$size , grid=T,  ylim =c(0,max(mergey$iterations_slow)), scales = list(x = list(log = 10, equispaced.log = FALSE)),
+       type = c("p", "smooth"), col.line = "darkorange", lwd = 3)
+
+xyplot(mergey$iterations_slow ~ mergey$size , grid=T,  ylim =c(0,max(mergey$iterations_slow)), scales = list(x = list(log = 10, equispaced.log = FALSE)),
        type = c("p", "smooth"), col.line = "darkorange", lwd = 3)
