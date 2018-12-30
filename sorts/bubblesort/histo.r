@@ -10,8 +10,8 @@ head(slow)
 slow_fast <- rbind(slow,fast)
 
 head(slow_fast)
-xyplot(slow_fast$iterations~slow_fast$size|slow_fast$speed, scales = list(x = list(log = 10, equispaced.log = FALSE)),
-       type = c("p", "smooth"), col.line = "darkorange", lwd = 3)
+xyplot(slow_fast$iterations~slow_fast$size|slow_fast$speed,
+       type = c("p", "smooth"), col.line = "darkorange", lwd = 1)
 
 #mergey <- merge(slow,fast, by="size")
 #head(mergey)
