@@ -23,7 +23,6 @@ fun main(args: Array<String>){
 
     // see what we have
     printArray(listy)
-     
 }
 
 // swap the values at two indices
