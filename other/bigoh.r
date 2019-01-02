@@ -1,5 +1,5 @@
-file = "C:/Users/jderiggi/documents/coderrust/basicalgos/arraysandbinarysearch/other/whilecounter.csv"
+file = "C:/Users/jderiggi/documents/coderrust/basicalgos/other/nonLinearDiv.csv"
 whiledata <- read.csv(file = file , header = T);
 head(whiledata)
 xyplot(whiledata$iterations~whiledata$size,
-       type = c("p", "smooth"), col.line = "darkorange", lwd = 2)
+       type = c("p", "smooth"), col.line = "brown", lwd = 2)
