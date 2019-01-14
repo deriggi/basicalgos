@@ -11,6 +11,8 @@ When you don't scan the entire array every time you get about a 50% improvement 
 Rotating is straightforward. To the right, save the last element as a temp then bump every other element up by one:
 [Rotating a circular buffer](circularbuffer/roundrotation.js)
 
+Here is a [left and right rotation in Java](circularbuffer/CircularBuffer.java) 
+
 
 
 
