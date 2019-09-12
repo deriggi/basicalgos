@@ -6,4 +6,3 @@ function rev(s){
 
     return rev(s.substring(1)) + s[0];
 }
-
