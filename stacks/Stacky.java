@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Stacky{
     private Integer[] arr = new Integer[10];
     private int N = 0;
@@ -25,7 +27,18 @@ public class Stacky{
         s.print();
         System.out.println(s.pop());
         System.out.println(s.pop());
+        
 
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        while(!input.equals("exit")){
+            input = scanner.nextLine();
+            for(int i = 0; i < input.length() ; i++){
+                System.out.println(input.charAt(i));
+            }
+
+        }
+        scanner.close();
     }
     // implement a linked list
     /// implement a stack as a linked list
