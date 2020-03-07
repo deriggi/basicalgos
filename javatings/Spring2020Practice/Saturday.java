@@ -3,12 +3,16 @@ import java.util.Arrays;
 public class Saturday{
 
     public static void main(String[] args){
+
         System.out.println("starting");
         String[] testerArr = {"z","S", "Z", "k", "w", "e", "N",  "w", "Z" };
-        
+        String[] testerArr2 = {"z","b", "Z", "9", "w", "e", "5",  "5", "Z" };
         Saturday doThis = new Saturday();
 
-        doThis.rotateLeft( testerArr );
+        doThis.intersect(testerArr, testerArr2);
+
+        // doThis.intersectArraysWithoutReshuffling(testerArr, testerArr2);
+        // doThis.rotateLeft( testerArr );
         // doThis.rotateRight( testerArr );
         // doThis.removeDupes( testerArr );
 
@@ -20,6 +24,7 @@ public class Saturday{
         // from 0 to second to last element compare n with n+1 and remove n if need to
         for(int i = 0; i < arr.length-1; i++){
             if( arr[i].equals(arr[i+1]) ){
+
                 System.out.println(arr[i] + " is a dupe with " + arr[i+1]);
                 arr[i] = "";
             }
@@ -61,10 +66,67 @@ public class Saturday{
             
     }
 
+    // matches intersections on position only
+    public void intersectArraysWithoutReshuffling(String[] arr1, String[] arr2){
+        int c1 = 0;
+        int c2 = 0;
+        
+        String[] matchy = new String[arr1.length];
+
+        while( c1 <= arr1.length - 1 && c2 <= arr2.length - 1) {
+            if( arr1[c1].equals(arr2[c2]) ){
+                matchy[c1] = arr1[c1];
+            }
+            c1++;
+            c2++;
+        }
+                
+        printArray(matchy);
+        
+    }
+
+    // interset based on characters
+    private void intersect(String[] arr1, String[] arr2){
+
+        int c1 = 0; 
+        int c2 = 0;
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        String[] intersection = new String[arr1.length];
+        int interIndex = 0;
+
+        while(c1 <= arr1.length && c2 < arr2.length){
+            
+            if( arr1[c1].equals(arr2[c2]) ){
+                intersection[interIndex++] = arr1[c1];
+                c1++;
+                c2++;
+            }
+            else if( arr1[c1].compareTo(arr2[c2]) < 0 ){
+                c1++;
+            }
+            else if( arr1[c1].compareTo(arr2[c2]) > 0 ){
+                c2++;
+            }
+
+        }
+
+        printArray(intersection);
+
+    }
+
+
+    // tic tac toe?
+
+
     private void printArray(String[] arr){
         for( int i =0; i < arr.length; i++){
-            System.out.print(arr[i]);
-            System.out.print(" ");
+            String toPrint = arr[i] == null ? "" : arr[i];
+
+            System.out.print(toPrint);
+            System.out.print(", ");
         }
         System.out.println();
     }
