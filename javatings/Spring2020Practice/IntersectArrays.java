@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 public class IntersectArrays{
 
@@ -80,18 +81,78 @@ public class IntersectArrays{
     }
 
     // remove an element by shifting all elements down
+    private void deleteElementX(String[] arr, Integer target){
+        printArray(arr);
+
+        for(int i = target+1; i < arr.length; i++){
+            arr[i-1] = arr[i];
+        }
+        // gots to set the last to null
+        arr[arr.length-1] = null;
+
+        printArray(arr);
+    }
+
+    public void printStacky(Stack<String> st){
+        for(int i = 0; i < st.size(); i++){
+            System.out.print(st.get(i));
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+
 
     // is palindrome
+    public void isPalindrome(String[] arr){
+        printArray(arr);
+        Stack<String> stacky = new Stack<>();
+
+        
+        for(int i = 0; i < arr.length/2; i++){
+            stacky.push(arr[i]);
+        }
+        printStacky(stacky);
+
+        int cursor;
+        if(arr.length%2 != 0){
+            // odd
+            cursor = new Double(Math.floor(arr.length/2)+1).intValue();
+        }
+        else {
+            cursor = arr.length/2 ;
+        }
+
+        boolean isPal = true;
+        while(cursor < arr.length && stacky.size() > 0   ){
+            if(!stacky.pop().equals(arr[cursor++])){
+                isPal = false;
+            }
+        }
+        System.out.println("pali : " + isPal);
+        printStacky(stacky);
+    }
+
+    // fix plali
+    // find with obstacles
+    // flood plain
+
 
     
     public static void main( String[] args) {
         System.out.println("will it run from here");
         String[] a1 = {"x", "b", "T", "r", "x", "r"};
+        String[] a3 = {"x", "b", "T", "T", "b", "x"};
+        String[] a4 = {"x", "b", "T", "r", "T", "c", "x"};
+
+
         String[] a2 = {"w", "s", "T", "r"};
 
         // new IntersectArrays().intersect(a1,a2);
         // new IntersectArrays().identifyDuplicates(a1);
-        new IntersectArrays().removeDuplicates(a1);
+        // new IntersectArrays().removeDuplicates(a1);
+        // new IntersectArrays().deleteElementX(a1, 2);
+        new IntersectArrays().isPalindrome(a3);
+
 
 
     }
