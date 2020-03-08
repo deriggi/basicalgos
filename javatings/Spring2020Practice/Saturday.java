@@ -9,8 +9,10 @@ public class Saturday{
         String[] testerArr2 = {"z","b", "Z", "9", "w", "e", "5",  "5", "Z" };
         Saturday doThis = new Saturday();
 
-        doThis.intersect(testerArr, testerArr2);
+        doThis.reverseString("abcde", "main ");
 
+
+        // doThis.intersect(testerArr, testerArr2);
         // doThis.intersectArraysWithoutReshuffling(testerArr, testerArr2);
         // doThis.rotateLeft( testerArr );
         // doThis.rotateRight( testerArr );
@@ -119,7 +121,28 @@ public class Saturday{
 
 
     // tic tac toe?
+    // reverse a string
 
+    private String reverseString(String x, String callerName){
+        System.out.println("- " + x + ": " + callerName);
+
+        if( x.length() <=1 ){
+            System.out.println("# " + x);
+            return x;
+        }
+
+        String concat = reverseString(x.substring(1), "internal ") + x.substring(0,1);
+        System.out.println(concat + ": " + callerName);
+
+        return concat;
+    }
+
+    private
+    
+
+
+    // valid panlindrome
+    // valid anagram
 
     private void printArray(String[] arr){
         for( int i =0; i < arr.length; i++){
