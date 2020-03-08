@@ -1,4 +1,7 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Stack;
 
 public class Saturday{
 
@@ -9,14 +12,21 @@ public class Saturday{
         String[] testerArr2 = {"z","b", "Z", "9", "w", "e", "5",  "5", "Z" };
         Saturday doThis = new Saturday();
 
-        doThis.reverseString("abcde", "main ");
 
+        System.out.println(doThis.isAnagram("ABCDE", "EDCBA"));
 
+        System.out.println(doThis.isAnagram("ABCDEX", "EDCBA"));
+
+        
+        // doThis.isPalindrome("racecar");
+        // doThis.isPalindrome("ABCCXBA");
         // doThis.intersect(testerArr, testerArr2);
         // doThis.intersectArraysWithoutReshuffling(testerArr, testerArr2);
         // doThis.rotateLeft( testerArr );
         // doThis.rotateRight( testerArr );
         // doThis.removeDupes( testerArr );
+        // doThis.reverseString("abcde", "main ");
+
 
     }
 
@@ -137,7 +147,65 @@ public class Saturday{
         return concat;
     }
 
-    private
+    private Boolean isAnagram(String a, String b){
+        
+        HashMap<String,Integer> countA  = makeCountMap(a);
+        HashMap<String,Integer> countB  = makeCountMap(b);
+
+        Set<String> keys = countA.keySet();
+        for(String k: keys){
+            if( !countA.get(k).equals(countB.get(k)) ){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private HashMap<String,Integer> makeCountMap(String s){
+
+        HashMap<String,Integer> countMap  = new HashMap<>();
+        for(int i = 0; i < s.length(); i++){
+
+            String letter = s.substring(i,i+1);
+            if (!countMap.containsKey(letter)) {
+                countMap.put(letter,0);
+            }
+            countMap.put(letter,countMap.get(letter)+1);
+        }
+
+        return countMap;
+
+    }
+
+    // tic tac toe
+
+    private void isPalindrome( String s ){
+        
+        Boolean isEvenLength = s.length()%2 == 0;
+
+        int maxToPush = s.length()/2 - 1 ;
+
+        // if even then push  s.length()/2 chars
+        System.out.println(s.length() / 2 + " is length over 2");       
+         
+        Stack<String> stacky = new Stack<>();
+        int counter = 0;
+        
+        while( counter <= maxToPush ){
+            stacky.push(s.substring(counter,counter+1));
+            counter++;
+        }
+        
+                
+        while ( stacky.size() != 0 && stacky.peek().equals(s.subSequence(counter, counter+1))){
+            counter++;
+            stacky.pop();
+        }
+
+        System.out.println(stacky.size() + " is the size of our stacky ");
+
+    }
     
 
 
