@@ -9,7 +9,13 @@ public class Link{
         // one.next = two;
         // printList(one);
 
-        makeRandoList(10);
+
+        Link head = makeRandoList(10);
+        printList(head);
+
+        System.out.println();
+        deleteNodeN(head, 1);
+        printList(head);
 
 
 
@@ -24,9 +30,22 @@ public class Link{
             cursor = cursor.next;
         }
 
-        printList(head);
+        
         return head;
 
+    }
+
+    private static void deleteNodeN(Link head, int i){
+        int counter = 0;
+        Link cursor = head;
+        Link prev = head;
+
+        while(counter++ < i && cursor != null){
+            prev = cursor;
+            cursor = cursor.next;
+        }
+
+        prev.next = cursor.next;
     }
 
     private static Integer rint( int size ){
