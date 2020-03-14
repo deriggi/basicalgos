@@ -1,5 +1,7 @@
 package linkedlists;
 
+import java.util.Stack;
+
 public class Link{
     public static void main(String[] args){
         System.out.println("hi there");
@@ -13,11 +15,16 @@ public class Link{
         Link head = makeRandoList(10);
         printList(head);
 
-        System.out.println();
-        deleteNodeN(head, 1);
-        printList(head);
+        // System.out.println();
+        // deleteNodeN(head, 1);
+        // printList(head);
 
+        // Link l = reverse(head);
+        // printList(l);
 
+        Link newHead = reverse(head);
+
+        printList(newHead);
 
     }
 
@@ -30,7 +37,6 @@ public class Link{
             cursor = cursor.next;
         }
 
-        
         return head;
 
     }
@@ -46,6 +52,45 @@ public class Link{
         }
 
         prev.next = cursor.next;
+    }
+
+    private static Link reverse(Link head){
+        Stack<Link> stackOfLinks = new Stack<>();
+        while(head != null){
+            stackOfLinks.push(head);
+            head = head.next();
+        }
+
+        System.out.println();
+        System.out.println( stackOfLinks.size() + " is size of stack " );
+
+        Link current;
+        Link prev = null;
+        Link newHead = null;
+        int counter = 0;
+
+        while( !stackOfLinks.isEmpty() ){
+            
+            current = stackOfLinks.pop();
+            
+            if(prev != null){
+                prev.next = current;
+            }
+
+            if(counter++ == 0){
+                newHead = current;
+            }
+            prev = current;
+
+            if(stackOfLinks.isEmpty()){
+                current.next= null;
+            }
+        }
+
+       
+        return newHead;
+
+        // return tail;
     }
 
     private static Integer rint( int size ){
