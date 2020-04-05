@@ -16,7 +16,7 @@ public class FindSum {
         // Arrays.sort(soMany);
         // fs.binarySearch(soMany, 900);
 
-        fs.findSum2(soMany, 36);
+        fs.findSum3(soMany, 36);
     }
 
     // naive approach
@@ -44,7 +44,23 @@ public class FindSum {
                 System.out.println(arr[location] + " " + arr[i]  + " = " + target);
             }
         }
-        
+    }
+
+    private void findSum3(Integer[] arr, Integer target){
+        Arrays.sort(arr);
+        Integer l = 0, r = arr.length-1;
+        while(l <= r){
+            System.out.println("line");
+            Integer sum = arr[l] + arr[r];
+            if(sum < target){
+                l++;
+            }else if(sum > target){
+                r--;
+            }else if(sum == target){
+                System.out.println(arr[r] + " " + arr[l] + " = " + target);
+                break;
+            }
+        }
 
     }
 
